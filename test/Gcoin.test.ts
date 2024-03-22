@@ -62,5 +62,12 @@ describe("Genesis", function () {
       const instance = gCoin.connect(otherAccount);
       await expect(instance.burn(BALANCE_OWNER)).to.be.revertedWith("do you not permission")
     })
+
+    
+    it("Should decimals ", async function () {
+      const { gCoin, otherAccount} = await loadFixture(deployFixture);
+      const decimals = await gCoin.decimals();
+      expect(decimals).to.equal(6);
+    })
   });
 });

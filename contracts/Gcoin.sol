@@ -15,7 +15,7 @@ contract Gcoin is ERC20 {
     address oficialAddress;
 
     constructor()ERC20("Genesys Coin","GNS"){
-      _mint(msg.sender, 6_802_250 *10 **6);
+      _mint(msg.sender, 6_802_250 *10 **decimals());
       owner = msg.sender;
        
     }
@@ -53,6 +53,11 @@ contract Gcoin is ERC20 {
     function burn(uint amount) external onlyOwner {
         _burn(_msgSender(), amount);
     }
+
+
+    function decimals() public view override returns (uint8) {
+        return 6;
+	}
 
 
     /* this modifier uesed for access controll */
